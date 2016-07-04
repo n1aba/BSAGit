@@ -73,5 +73,5 @@
                 }
             }
         }
-        return el;
+        return el !== null;
     };
