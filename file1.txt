@@ -54,3 +54,24 @@
         };
 
     } )();
+    // `arraify` takes an array-like object and turns it into real Array
+    // to make all the Array.prototype goodness available.
+    var arrayify = function( a ) {
+        return [].slice.call( a );
+    };
+
+    // `css` function applies the styles given in `props` object to the element
+    // given as `el`. It runs all property names through `pfx` function to make
+    // sure proper prefixed version of the property is used.
+    var css = function( el, props ) {
+        var key, pkey;
+        for ( key in props ) {
+            if ( props.hasOwnProperty( key ) ) {
+                pkey = pfx( key );
+                if ( pkey !== null ) {
+                    el.style[ pkey ] = props[ key ];
+                }
+            }
+        }
+        return el;
+    };
